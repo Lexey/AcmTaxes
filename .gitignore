@@ -1,0 +1,14 @@
+/.vs/
+/AcmTaxes/bin/Debug/
+/AcmTaxes/obj/
+/DB/bin/
+/DB/obj/
+/Model/bin/
+/Model/obj/
+/OperationsParser/bin/
+/OperationsParser/obj/
+/SellReport/bin/
+/SellReport/obj/
+/Tests/bin/
+/Tests/obj/
+/AcmTaxes.sln.DotSettings.user

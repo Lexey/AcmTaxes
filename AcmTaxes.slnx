@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="AcmTaxes/AcmTaxes.csproj" />
+  <Project Path="DB/DB.csproj" Id="cdada9c5-fecb-4557-8769-b0de261f865f" />
+  <Project Path="OperationsParser/OperationsParser.csproj" />
+  <Project Path="SellReport/SellReport.csproj" Id="209b4624-21d1-424f-a86f-b22124850502" />
+  <Project Path="Tests/Tests.csproj" Id="62f6cf01-a2f2-4abe-9b7c-d213f2b77b54" />
+</Solution>

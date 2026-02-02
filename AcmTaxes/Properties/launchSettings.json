@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "AcmTaxes": {
+      "commandName": "Project",
+      "commandLineArgs": "report 2024"
+    }
+  }
+}
