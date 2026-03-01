@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="AcmTaxes/AcmTaxes.csproj" />
+  <Project Path="CurrencyResolver/CurrencyResolver.csproj" Id="2d4dacbc-df7f-444a-b66f-88a868145987" />
   <Project Path="DB/DB.csproj" Id="cdada9c5-fecb-4557-8769-b0de261f865f" />
   <Project Path="OperationsParser/OperationsParser.csproj" />
   <Project Path="SellReport/SellReport.csproj" Id="209b4624-21d1-424f-a86f-b22124850502" />

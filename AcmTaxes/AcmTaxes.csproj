@@ -19,9 +19,9 @@
 
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
-    <PackageReference Include="EPPlus" Version="8.4.1" />
+    <PackageReference Include="EPPlus" Version="8.4.2" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-    <PackageReference Include="NLog" Version="6.0.7" />
+    <PackageReference Include="NLog" Version="6.1.1" />
   </ItemGroup>
 
   <ItemGroup>

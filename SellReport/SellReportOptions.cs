@@ -9,11 +9,13 @@ public class SellReportOptions
         { Columns.SoldEarlierQuantity, "ПРОДАНО РАНЕЕ" },
         { Columns.SoldQuantity, "ПРОДАНО" },
         { Columns.RemainingQuantity, "ОСТАЛОСЬ" },
-        { Columns.Costs, "РАСХОДЫ" }
+        { Columns.Costs, "РАСХОДЫ" },
+        { Columns.CostsRub, "РАСХОДЫ РУБ" },
+        { Columns.CurrencyRate, "КУРС ВАЛЮТЫ" }
     });
 
     public string ReportSheetName { get; set; } = "Продажи ЦБ";
 
-    public int PriceLoadRoundingDigits { get; set; } = 4;
-    public int CostsLoadRoundingDigits { get; set; } = 4;
+    public int PriceRoundingDigits { get; set; } = 4;
+    public int CostsRoundingDigits { get; set; } = 4;
 }

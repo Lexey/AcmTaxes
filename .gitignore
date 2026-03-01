@@ -12,3 +12,5 @@
 /Tests/bin/
 /Tests/obj/
 /AcmTaxes.sln.DotSettings.user
+/CurrencyResolver/bin/
+/CurrencyResolver/obj/

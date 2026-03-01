@@ -2,8 +2,10 @@
 
 public enum Columns
 {
-    Costs, // РАСХОДЫ
+    CostsRub, //РАСХОДЫ РУБ
     SoldQuantity, // ПРОДАНО
     SoldEarlierQuantity, // ПРОДАНО РАНЕЕ
     RemainingQuantity, // ОСТАЛОСЬ
+    Costs, // РАСХОДЫ
+    CurrencyRate // КУРС ВАЛЮТЫ
 }

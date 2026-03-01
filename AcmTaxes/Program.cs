@@ -56,6 +56,6 @@ class Program
         Logger.Info("Generating report for the year {0}", options.Year);
         var transactions = new Database(options.DbPath).LoadTransactions();
         Logger.Info("Loaded {0} transactions from the db", transactions.Count);
-        new SellReport.SellReport(new SellReportOptions(), new OperationsParserOptions()).BuildReport(transactions, options.Year, options.ReportFilePath);
+        new SellReport.SellReport(new SellReportOptions(), new OperationsParserOptions(), new CurrencyResolver.CurrencyResolver()).BuildReport(transactions, options.Year, options.ReportFilePath);
     }
 }
