@@ -15,7 +15,4 @@ public class SellReportOptions
     });
 
     public string ReportSheetName { get; set; } = "Продажи ЦБ";
-
-    public int PriceRoundingDigits { get; set; } = 4;
-    public int CostsRoundingDigits { get; set; } = 4;
 }

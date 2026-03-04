@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using NLog;
 using OfficeOpenXml;
 using System.Globalization;
+using CodeJam.Strings;
 using Transaction = Acm.DB.Transaction;
 
 namespace Acm.SellReport;
@@ -57,6 +58,24 @@ public class SellReport(SellReportOptions reportOptions, OperationsParserOptions
         public required IReadOnlyList<RelatedBuyTransaction> RelatedBuyTransactions { get; init; }
     }
 
+    public record SellsOnDate
+    {
+        [JsonProperty]
+        public required DateTime SettlementDate { get; init; }
+
+        [JsonProperty]
+        public required decimal Total { get; init; }
+
+        [JsonProperty]
+        public required decimal Costs { get; init; }
+
+        [JsonProperty]
+        public required decimal CostsRub { get; init; }
+
+        [JsonProperty]
+        public required IReadOnlyList<SellTransaction> SellTransactions { get; init; }
+    }
+
     public void BuildReport(List<Transaction> transactions, int year, string reportPath)
     {
         var sellTransactions = BuildReportData(transactions, year);
@@ -65,55 +84,72 @@ public class SellReport(SellReportOptions reportOptions, OperationsParserOptions
         SaveReport(sellTransactions, reportPath);
     }
 
-    public List<SellTransaction> LoadSellTransactions(string reportPath)
+    public List<SellsOnDate> LoadSells(string reportPath)
     {
         using var package = new ExcelPackage(reportPath);
         var sheet = package.Workbook.Worksheets[reportOptions.ReportSheetName];
-        var result = new List<SellTransaction>();
+        var result = new List<SellsOnDate>();
         var lastRow = sheet.Dimension.End.Row;
         var row = 2;
         while (row <= lastRow)
         {
-            var transaction = ParseTransaction(sheet, row);
-            if (transaction.Type != BuySell.Sell)
+            var sells = new List<SellTransaction>();
+            var sellOnDate = new SellsOnDate
             {
-                throw new InvalidDataException(
-                    $"Unexpected transaction type {GetOperationTypeText(sheet, row)} at row {row}. Expected {operationsOptions.OperationTypeSell}");
-            }
-
-            var relatedBuyTransactions = new List<RelatedBuyTransaction>();
-            var sell = new SellTransaction
-            {
-                Transaction = transaction,
-                CostsRub = Math.Round(decimal.Parse(sheet.Cells[row, FirstSellColumnIndex + (int)Columns.CostsRub].Text), reportOptions.CostsRoundingDigits),
-                Costs = Math.Round(decimal.Parse(sheet.Cells[row, FirstSellColumnIndex + (int)Columns.Costs].Text), reportOptions.CostsRoundingDigits),
-                RelatedBuyTransactions = relatedBuyTransactions
+                SettlementDate = ParseSettlementDate(sheet, row),
+                CostsRub = ParseCostsRub(sheet, row),
+                Costs = ParseCosts(sheet, row),
+                Total = ParseTotal(sheet, row),
+                SellTransactions = sells
             };
-
             ++row;
-            // related transactions
-            while (row <= lastRow && GetOperationTypeText(sheet, row) == operationsOptions.OperationTypeBuy)
+            while (row <= lastRow && !GetOperationTypeText(sheet, row).IsNullOrEmpty())
             {
-                var buy = new RelatedBuyTransaction
+                var transaction = ParseTransaction(sheet, row);
+                if (transaction.Type != BuySell.Sell)
                 {
-                    Transaction = ParseTransaction(sheet, row),
-                    CostsRub = Math.Round(decimal.Parse(sheet.Cells[row, FirstSellColumnIndex + (int)Columns.CostsRub].Text), reportOptions.CostsRoundingDigits),
-                    SoldQuantity = int.Parse(sheet.Cells[row, FirstSellColumnIndex + (int)Columns.SoldQuantity].Text),
-                    SoldEarlierQuantity = int.Parse(sheet.Cells[row, FirstSellColumnIndex + (int)Columns.SoldEarlierQuantity].Text),
-                    RemainingQuantity = int.Parse(sheet.Cells[row, FirstSellColumnIndex + (int)Columns.RemainingQuantity].Text),
-                    Costs = Math.Round(decimal.Parse(sheet.Cells[row, FirstSellColumnIndex + (int)Columns.Costs].Text), reportOptions.CostsRoundingDigits),
-                    CurrencyRate = decimal.Parse(sheet.Cells[row, FirstSellColumnIndex + (int)Columns.CurrencyRate].Text)
-                };
-                relatedBuyTransactions.Add(buy);
-                ++row;
-            }
-            result.Add(sell);
-        }
+                    throw new InvalidDataException(
+                        $"Unexpected transaction type {GetOperationTypeText(sheet, row)} at row {row}. Expected {operationsOptions.OperationTypeSell}");
+                }
 
+                var relatedBuyTransactions = new List<RelatedBuyTransaction>();
+                var sell = new SellTransaction
+                {
+                    Transaction = transaction,
+                    CostsRub = ParseCostsRub(sheet, row),
+                    Costs = ParseCosts(sheet, row),
+                    RelatedBuyTransactions = relatedBuyTransactions
+                };
+
+                ++row;
+                // related transactions
+                while (row <= lastRow && GetOperationTypeText(sheet, row) == operationsOptions.OperationTypeBuy)
+                {
+                    var buy = new RelatedBuyTransaction
+                    {
+                        Transaction = ParseTransaction(sheet, row),
+                        CostsRub = ParseCostsRub(sheet, row),
+                        Costs = ParseCosts(sheet, row),
+                        SoldQuantity =
+                            int.Parse(sheet.Cells[row, FirstSellColumnIndex + (int)Columns.SoldQuantity].Text),
+                        SoldEarlierQuantity =
+                            int.Parse(sheet.Cells[row, FirstSellColumnIndex + (int)Columns.SoldEarlierQuantity].Text),
+                        RemainingQuantity =
+                            int.Parse(sheet.Cells[row, FirstSellColumnIndex + (int)Columns.RemainingQuantity].Text),
+                        CurrencyRate =
+                            decimal.Parse(sheet.Cells[row, FirstSellColumnIndex + (int)Columns.CurrencyRate].Text)
+                    };
+                    relatedBuyTransactions.Add(buy);
+                    ++row;
+                }
+                sells.Add(sell);
+            }
+            result.Add(sellOnDate);
+        }
         return result;
     }
 
-    private List<SellTransaction> BuildReportData(List<Transaction> transactions, int year)
+    private List<SellsOnDate> BuildReportData(List<Transaction> transactions, int year)
     {
         var transactionByISIN =
             transactions
@@ -138,7 +174,7 @@ public class SellReport(SellReportOptions reportOptions, OperationsParserOptions
             transactionByISIN
                 .ToDictionary(kv => kv.Key, kv => kv.Value.Where(t => t.Type == BuySell.Sell).ToList());
 
-        var result = new List<SellTransaction>();
+        var sells = new List<SellTransaction>();
         foreach (var kv in sellTransactions)
         {
             var buys = buyTransactions[kv.Key];
@@ -172,7 +208,7 @@ public class SellReport(SellReportOptions reportOptions, OperationsParserOptions
                     }
 
                     var quantity = Math.Min(totalQuantity, buy.RemainingQuantity);
-                    var cost = buy.Transaction.Total * quantity / buy.Transaction.Quantity;
+                    var cost = -buy.Transaction.Total * quantity / buy.Transaction.Quantity;
                     var costRub = cost * buy.CurrencyRate;
                     buy.RemainingQuantity -= quantity;
                     if (includeInReport)
@@ -198,7 +234,7 @@ public class SellReport(SellReportOptions reportOptions, OperationsParserOptions
                 {
                     continue;
                 }
-                result.Add(new SellTransaction
+                sells.Add(new SellTransaction
                 {
                     Costs = totalCost,
                     CostsRub = totalCostRub,
@@ -209,10 +245,23 @@ public class SellReport(SellReportOptions reportOptions, OperationsParserOptions
             }
         }
 
-        return result.OrderBy(s => s.Transaction.SettlementDate).ThenBy(s => s.Transaction.Id).ToList();
+        var sellsByDate = sells
+            .OrderBy(s => s.Transaction.SettlementDate)
+            .ThenBy(s => s.Transaction.Id)
+            .GroupBy(s => s.Transaction.SettlementDate)
+            .Select(g => new SellsOnDate
+            {
+                SettlementDate = g.Key,
+                Costs = g.Sum(s => s.Costs),
+                CostsRub = g.Sum(s => s.CostsRub),
+                Total = g.Sum(s => s.Transaction.Total),
+                SellTransactions = g.OrderBy(s => s.Transaction.SettlementDate).ToList()
+            })
+            .ToList();
+        return sellsByDate;
     }
 
-    private void SaveReport(List<SellTransaction> transactions, string reportPath)
+    private void SaveReport(List<SellsOnDate> sellsOnDates, string reportPath)
     {
         Logger.Info("Saving sell transactions to {0}", reportPath);
         using var package = new ExcelPackage(reportPath);
@@ -233,25 +282,38 @@ public class SellReport(SellReportOptions reportOptions, OperationsParserOptions
         }
 
         var row = headerRow + 1;
-        foreach (var sell in transactions)
+        foreach (var sells in sellsOnDates)
         {
-            WriteTransaction(sheet, sell.Transaction, row);
-            sheet.Cells[row, FirstSellColumnIndex + (int)Columns.CostsRub].Value = Math.Round(sell.CostsRub, reportOptions.CostsRoundingDigits);
-            sheet.Cells[row, FirstSellColumnIndex + (int)Columns.Costs].Value = Math.Round(sell.Costs, reportOptions.CostsRoundingDigits);
+            sheet.Cells[row, 1 + (int)OperationsParser.Columns.SettlementDate].Value = $"{sells.SettlementDate:yyyy-MM-dd}";
+            sheet.Cells[row, FirstSellColumnIndex + (int)Columns.CostsRub].Value = sells.CostsRub;
+            sheet.Cells[row, FirstSellColumnIndex + (int)Columns.Costs].Value = sells.Costs;
+            sheet.Cells[row, 1 + (int)OperationsParser.Columns.Total].Value = sells.Total;
             ++row;
-            var firstRelatedRow = row;
-            foreach (var buy in sell.RelatedBuyTransactions)
+            var firstSellsRow = row;
+            foreach (var sell in sells.SellTransactions)
             {
-                WriteTransaction(sheet, buy.Transaction, row);
-                sheet.Cells[row, FirstSellColumnIndex + (int)Columns.CostsRub].Value = Math.Round(buy.CostsRub, reportOptions.CostsRoundingDigits);
-                sheet.Cells[row, FirstSellColumnIndex + (int)Columns.SoldQuantity].Value = buy.SoldQuantity;
-                sheet.Cells[row, FirstSellColumnIndex + (int)Columns.SoldEarlierQuantity].Value = buy.SoldEarlierQuantity;
-                sheet.Cells[row, FirstSellColumnIndex + (int)Columns.RemainingQuantity].Value = buy.RemainingQuantity;
-                sheet.Cells[row, FirstSellColumnIndex + (int)Columns.Costs].Value = Math.Round(buy.Costs, reportOptions.CostsRoundingDigits);
-                sheet.Cells[row, FirstSellColumnIndex + (int)Columns.CurrencyRate].Value = buy.CurrencyRate;
+                WriteTransaction(sheet, sell.Transaction, row);
+                sheet.Cells[row, FirstSellColumnIndex + (int)Columns.CostsRub].Value = sell.CostsRub;
+                sheet.Cells[row, FirstSellColumnIndex + (int)Columns.Costs].Value = sell.Costs;
                 ++row;
+                var firstRelatedBuyRow = row;
+                foreach (var buy in sell.RelatedBuyTransactions)
+                {
+                    WriteTransaction(sheet, buy.Transaction, row);
+                    sheet.Cells[row, FirstSellColumnIndex + (int)Columns.CostsRub].Value = buy.CostsRub;
+                    sheet.Cells[row, FirstSellColumnIndex + (int)Columns.SoldQuantity].Value = buy.SoldQuantity;
+                    sheet.Cells[row, FirstSellColumnIndex + (int)Columns.SoldEarlierQuantity].Value =
+                        buy.SoldEarlierQuantity;
+                    sheet.Cells[row, FirstSellColumnIndex + (int)Columns.RemainingQuantity].Value =
+                        buy.RemainingQuantity;
+                    sheet.Cells[row, FirstSellColumnIndex + (int)Columns.Costs].Value = buy.Costs;
+                    sheet.Cells[row, FirstSellColumnIndex + (int)Columns.CurrencyRate].Value = buy.CurrencyRate;
+                    ++row;
+                }
+
+                sheet.Rows[firstRelatedBuyRow, row - 1].Group();
             }
-            sheet.Rows[firstRelatedRow, row - 1].Group();
+            sheet.Rows[firstSellsRow, row - 1].Group();
         }
 
         package.SaveAs(reportPath);
@@ -269,7 +331,7 @@ public class SellReport(SellReportOptions reportOptions, OperationsParserOptions
         sheet.Cells[row, 1 + (int)OperationsParser.Columns.ISIN].Value = transaction.ISIN;
         sheet.Cells[row, 1 + (int)OperationsParser.Columns.Quantity].Value = transaction.Quantity;
         sheet.Cells[row, 1 + (int)OperationsParser.Columns.MeasurementUnits].Value = "units";
-        sheet.Cells[row, 1 + (int)OperationsParser.Columns.Price].Value = Math.Round(transaction.Price, reportOptions.PriceRoundingDigits);
+        sheet.Cells[row, 1 + (int)OperationsParser.Columns.Price].Value = transaction.Price;
         sheet.Cells[row, 1 + (int)OperationsParser.Columns.Total].Value = transaction.Total;
         sheet.Cells[row, 1 + (int)OperationsParser.Columns.Currency].Value = transaction.Currency;
     }
@@ -279,9 +341,7 @@ public class SellReport(SellReportOptions reportOptions, OperationsParserOptions
         var type = GetOperationTypeText(sheet, row);
         return new Transaction
         {
-            SettlementDate =
-                DateTime.ParseExact(sheet.Cells[row, 1 + (int)OperationsParser.Columns.SettlementDate].Text,
-                    "yyyy-MM-dd", CultureInfo.InvariantCulture),
+            SettlementDate = ParseSettlementDate(sheet, row),
             Id = sheet.Cells[row, 1 + (int)OperationsParser.Columns.OperationNumber].Text,
             Type = type == operationsOptions.OperationTypeBuy
                 ? BuySell.Buy
@@ -294,11 +354,32 @@ public class SellReport(SellReportOptions reportOptions, OperationsParserOptions
             Ticker = sheet.Cells[row, 1 + (int)OperationsParser.Columns.Ticker].Text,
             ISIN = sheet.Cells[row, 1 + (int)OperationsParser.Columns.ISIN].Text,
             Quantity = int.Parse(sheet.Cells[row, 1 + (int)OperationsParser.Columns.Quantity].Text),
-            Price = Math.Round(decimal.Parse(sheet.Cells[row, 1 + (int)OperationsParser.Columns.Price].Text), reportOptions.PriceRoundingDigits),
-            Total = decimal.Parse(sheet.Cells[row, 1 + (int)OperationsParser.Columns.Total].Text),
+            Price = decimal.Parse(sheet.Cells[row, 1 + (int)OperationsParser.Columns.Price].Text),
+            Total = ParseTotal(sheet, row),
             Currency = sheet.Cells[row, 1 + (int)OperationsParser.Columns.Currency].Text,
             SourceIndex = row
         };
+    }
+
+    private static decimal ParseCosts(ExcelWorksheet sheet, int row)
+    {
+        return decimal.Parse(sheet.Cells[row, FirstSellColumnIndex + (int)Columns.Costs].Text);
+    }
+
+    private static decimal ParseCostsRub(ExcelWorksheet sheet, int row)
+    {
+        return decimal.Parse(sheet.Cells[row, FirstSellColumnIndex + (int)Columns.CostsRub].Text);
+    }
+
+    private static decimal ParseTotal(ExcelWorksheet sheet, int row)
+    {
+        return decimal.Parse(sheet.Cells[row, 1 + (int)OperationsParser.Columns.Total].Text);
+    }
+
+    private static DateTime ParseSettlementDate(ExcelWorksheet sheet, int row)
+    {
+        return DateTime.ParseExact(sheet.Cells[row, 1 + (int)OperationsParser.Columns.SettlementDate].Text,
+            "yyyy-MM-dd", CultureInfo.InvariantCulture);
     }
 
     private static string GetOperationTypeText(ExcelWorksheet sheet, int row)
