@@ -1,0 +1,30 @@
+[
+  {
+    "SettlementDate": "2024-09-26T00:00:00",
+    "Id": "004/567",
+    "Type": "Sell",
+    "AssetType": "Equity",
+    "Asset": "Asset1",
+    "Ticker": "ASS 1",
+    "ISIN": "CAASS1",
+    "Quantity": -157,
+    "Price": 16.14356687898089171974522293,
+    "Total": 2534.54,
+    "Currency": "USD",
+    "SourceIndex": 4
+  },
+  {
+    "SettlementDate": "2024-12-09T00:00:00",
+    "Id": "005/567",
+    "Type": "Buy",
+    "AssetType": "Equity",
+    "Asset": "Asset1",
+    "Ticker": "ASS 1",
+    "ISIN": "CAASS1",
+    "Quantity": 117,
+    "Price": 17.335042735042735042735042735,
+    "Total": -2028.20,
+    "Currency": "USD",
+    "SourceIndex": 5
+  }
+]

@@ -1,0 +1,788 @@
+[
+  {
+    "SettlementDate": "2025-01-14T00:00:00",
+    "Total": 4423.68,
+    "Costs": 2416.5349659863945578231292517,
+    "CostsRub": 233417.46212756462585034013605,
+    "SellTransactions": [
+      {
+        "Transaction": {
+          "SettlementDate": "2025-01-14T00:00:00",
+          "Id": "016",
+          "Type": "Sell",
+          "AssetType": "Equity",
+          "Asset": "EBG NV",
+          "Ticker": "EBG US",
+          "ISIN": "USEBG",
+          "Quantity": -136,
+          "Price": 32.527058823529411764705882353,
+          "Total": 4423.68,
+          "Currency": "USD",
+          "SourceIndex": 3
+        },
+        "Costs": 2416.5349659863945578231292517,
+        "CostsRub": 233417.46212756462585034013605,
+        "RelatedBuyTransactions": [
+          {
+            "Transaction": {
+              "SettlementDate": "2024-10-23T00:00:00",
+              "Id": "013",
+              "Type": "Buy",
+              "AssetType": "Equity",
+              "Asset": "EBG NV",
+              "Ticker": "EBG US",
+              "ISIN": "USEBG",
+              "Quantity": 294,
+              "Price": 17.768639455782312925170068027,
+              "Total": -5223.98,
+              "Currency": "USD",
+              "SourceIndex": 4
+            },
+            "Costs": 2416.5349659863945578231292517,
+            "CostsRub": 233417.46212756462585034013605,
+            "SoldQuantity": 136,
+            "SoldEarlierQuantity": 0,
+            "RemainingQuantity": 158,
+            "CurrencyRate": 96.5918
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SettlementDate": "2025-04-07T00:00:00",
+    "Total": 12347.38,
+    "Costs": 16713.984007620643565344026173,
+    "CostsRub": 1532106.2611440834679913020926,
+    "SellTransactions": [
+      {
+        "Transaction": {
+          "SettlementDate": "2025-04-07T00:00:00",
+          "Id": "020",
+          "Type": "Sell",
+          "AssetType": "Equity",
+          "Asset": "DTC Inc",
+          "Ticker": "DTC US",
+          "ISIN": "USDTC",
+          "Quantity": -86,
+          "Price": 71.410116279069767441860465116,
+          "Total": 6141.27,
+          "Currency": "USD",
+          "SourceIndex": 6
+        },
+        "Costs": 9020.930909090909090909090909,
+        "CostsRub": 809217.1946414545454545454545,
+        "RelatedBuyTransactions": [
+          {
+            "Transaction": {
+              "SettlementDate": "2024-09-06T00:00:00",
+              "Id": "010",
+              "Type": "Buy",
+              "AssetType": "Equity",
+              "Asset": "DTC Inc",
+              "Ticker": "DTC US",
+              "ISIN": "USDTC",
+              "Quantity": 110,
+              "Price": 104.89454545454545454545454545,
+              "Total": -11538.40,
+              "Currency": "USD",
+              "SourceIndex": 7
+            },
+            "Costs": 9020.930909090909090909090909,
+            "CostsRub": 809217.1946414545454545454545,
+            "SoldQuantity": 86,
+            "SoldEarlierQuantity": 24,
+            "RemainingQuantity": 0,
+            "CurrencyRate": 89.7044
+          }
+        ]
+      },
+      {
+        "Transaction": {
+          "SettlementDate": "2025-04-07T00:00:00",
+          "Id": "021",
+          "Type": "Sell",
+          "AssetType": "Equity",
+          "Asset": "EBG NV",
+          "Ticker": "EBG US",
+          "ISIN": "USEBG",
+          "Quantity": -289,
+          "Price": 19.363910034602076124567474048,
+          "Total": 5596.17,
+          "Currency": "USD",
+          "SourceIndex": 8
+        },
+        "Costs": 6517.8750340136054421768707483,
+        "CostsRub": 619331.78786843537414965986395,
+        "RelatedBuyTransactions": [
+          {
+            "Transaction": {
+              "SettlementDate": "2024-10-23T00:00:00",
+              "Id": "013",
+              "Type": "Buy",
+              "AssetType": "Equity",
+              "Asset": "EBG NV",
+              "Ticker": "EBG US",
+              "ISIN": "USEBG",
+              "Quantity": 294,
+              "Price": 17.768639455782312925170068027,
+              "Total": -5223.98,
+              "Currency": "USD",
+              "SourceIndex": 9
+            },
+            "Costs": 2807.4450340136054421768707483,
+            "CostsRub": 271176.16923643537414965986395,
+            "SoldQuantity": 158,
+            "SoldEarlierQuantity": 136,
+            "RemainingQuantity": 0,
+            "CurrencyRate": 96.5918
+          },
+          {
+            "Transaction": {
+              "SettlementDate": "2025-01-28T00:00:00",
+              "Id": "017",
+              "Type": "Buy",
+              "AssetType": "Equity",
+              "Asset": "EBG NV",
+              "Ticker": "EBG US",
+              "ISIN": "USEBG",
+              "Quantity": 78,
+              "Price": 29.616282051282051282051282051,
+              "Total": -2310.07,
+              "Currency": "USD",
+              "SourceIndex": 10
+            },
+            "Costs": 2310.07,
+            "CostsRub": 224381.719240,
+            "SoldQuantity": 78,
+            "SoldEarlierQuantity": 0,
+            "RemainingQuantity": 0,
+            "CurrencyRate": 97.1320
+          },
+          {
+            "Transaction": {
+              "SettlementDate": "2025-03-11T00:00:00",
+              "Id": "018",
+              "Type": "Buy",
+              "AssetType": "Equity",
+              "Asset": "EBG NV",
+              "Ticker": "EBG US",
+              "ISIN": "USEBG",
+              "Quantity": 53,
+              "Price": 26.421886792452830188679245283,
+              "Total": -1400.36,
+              "Currency": "USD",
+              "SourceIndex": 11
+            },
+            "Costs": 1400.36,
+            "CostsRub": 123773.899392,
+            "SoldQuantity": 53,
+            "SoldEarlierQuantity": 0,
+            "RemainingQuantity": 0,
+            "CurrencyRate": 88.3872
+          }
+        ]
+      },
+      {
+        "Transaction": {
+          "SettlementDate": "2025-04-07T00:00:00",
+          "Id": "022",
+          "Type": "Sell",
+          "AssetType": "Equity",
+          "Asset": "ABC Inc",
+          "Ticker": "ABC US",
+          "ISIN": "USABC",
+          "Quantity": -7,
+          "Price": 87.13428571428571428571428571,
+          "Total": 609.94,
+          "Currency": "USD",
+          "SourceIndex": 12
+        },
+        "Costs": 1175.1780645161290322580645161,
+        "CostsRub": 103557.27863419354838709677419,
+        "RelatedBuyTransactions": [
+          {
+            "Transaction": {
+              "SettlementDate": "2024-07-05T00:00:00",
+              "Id": "001",
+              "Type": "Buy",
+              "AssetType": "Equity",
+              "Asset": "ABC Inc",
+              "Ticker": "ABC US",
+              "ISIN": "USABC",
+              "Quantity": 31,
+              "Price": 167.88258064516129032258064516,
+              "Total": -5204.36,
+              "Currency": "USD",
+              "SourceIndex": 13
+            },
+            "Costs": 1175.1780645161290322580645161,
+            "CostsRub": 103557.27863419354838709677419,
+            "SoldQuantity": 7,
+            "SoldEarlierQuantity": 0,
+            "RemainingQuantity": 24,
+            "CurrencyRate": 88.1205
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SettlementDate": "2025-04-21T00:00:00",
+    "Total": 1476.45,
+    "Costs": 2854.0038709677419354838709677,
+    "CostsRub": 251496.24811161290322580645161,
+    "SellTransactions": [
+      {
+        "Transaction": {
+          "SettlementDate": "2025-04-21T00:00:00",
+          "Id": "023",
+          "Type": "Sell",
+          "AssetType": "Equity",
+          "Asset": "ABC Inc",
+          "Ticker": "ABC US",
+          "ISIN": "USABC",
+          "Quantity": -17,
+          "Price": 86.85,
+          "Total": 1476.45,
+          "Currency": "USD",
+          "SourceIndex": 15
+        },
+        "Costs": 2854.0038709677419354838709677,
+        "CostsRub": 251496.24811161290322580645161,
+        "RelatedBuyTransactions": [
+          {
+            "Transaction": {
+              "SettlementDate": "2024-07-05T00:00:00",
+              "Id": "001",
+              "Type": "Buy",
+              "AssetType": "Equity",
+              "Asset": "ABC Inc",
+              "Ticker": "ABC US",
+              "ISIN": "USABC",
+              "Quantity": 31,
+              "Price": 167.88258064516129032258064516,
+              "Total": -5204.36,
+              "Currency": "USD",
+              "SourceIndex": 16
+            },
+            "Costs": 2854.0038709677419354838709677,
+            "CostsRub": 251496.24811161290322580645161,
+            "SoldQuantity": 17,
+            "SoldEarlierQuantity": 7,
+            "RemainingQuantity": 7,
+            "CurrencyRate": 88.1205
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SettlementDate": "2025-05-29T00:00:00",
+    "Total": 1028.70,
+    "Costs": 1529.1833978494623655913978494,
+    "CostsRub": 134769.50406779354838709677419,
+    "SellTransactions": [
+      {
+        "Transaction": {
+          "SettlementDate": "2025-05-29T00:00:00",
+          "Id": "024",
+          "Type": "Sell",
+          "AssetType": "Equity",
+          "Asset": "ABC Inc",
+          "Ticker": "ABC US",
+          "ISIN": "USABC",
+          "Quantity": -9,
+          "Price": 114.30,
+          "Total": 1028.70,
+          "Currency": "USD",
+          "SourceIndex": 18
+        },
+        "Costs": 1529.1833978494623655913978494,
+        "CostsRub": 134769.50406779354838709677419,
+        "RelatedBuyTransactions": [
+          {
+            "Transaction": {
+              "SettlementDate": "2024-07-05T00:00:00",
+              "Id": "001",
+              "Type": "Buy",
+              "AssetType": "Equity",
+              "Asset": "ABC Inc",
+              "Ticker": "ABC US",
+              "ISIN": "USABC",
+              "Quantity": 31,
+              "Price": 167.88258064516129032258064516,
+              "Total": -5204.36,
+              "Currency": "USD",
+              "SourceIndex": 19
+            },
+            "Costs": 1175.1780645161290322580645161,
+            "CostsRub": 103557.27863419354838709677419,
+            "SoldQuantity": 7,
+            "SoldEarlierQuantity": 24,
+            "RemainingQuantity": 0,
+            "CurrencyRate": 88.1205
+          },
+          {
+            "Transaction": {
+              "SettlementDate": "2024-07-09T00:00:00",
+              "Id": "003",
+              "Type": "Buy",
+              "AssetType": "Equity",
+              "Asset": "ABC Inc",
+              "Ticker": "ABC US",
+              "ISIN": "USABC",
+              "Quantity": 30,
+              "Price": 177.00266666666666666666666667,
+              "Total": -5310.08,
+              "Currency": "USD",
+              "SourceIndex": 20
+            },
+            "Costs": 354.00533333333333333333333333,
+            "CostsRub": 31212.225433600000000000000000,
+            "SoldQuantity": 2,
+            "SoldEarlierQuantity": 0,
+            "RemainingQuantity": 28,
+            "CurrencyRate": 88.1688
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SettlementDate": "2025-06-10T00:00:00",
+    "Total": 51.01,
+    "Costs": 39.0255,
+    "CostsRub": 3106.57419435,
+    "SellTransactions": [
+      {
+        "Transaction": {
+          "SettlementDate": "2025-06-10T00:00:00",
+          "Id": "027",
+          "Type": "Sell",
+          "AssetType": "Equity",
+          "Asset": "EBG NV",
+          "Ticker": "EBG US",
+          "ISIN": "USEBG",
+          "Quantity": -1,
+          "Price": 51.01,
+          "Total": 51.01,
+          "Currency": "USD",
+          "SourceIndex": 22
+        },
+        "Costs": 39.0255,
+        "CostsRub": 3106.57419435,
+        "RelatedBuyTransactions": [
+          {
+            "Transaction": {
+              "SettlementDate": "2025-05-29T00:00:00",
+              "Id": "025",
+              "Type": "Buy",
+              "AssetType": "Equity",
+              "Asset": "EBG NV",
+              "Ticker": "EBG US",
+              "ISIN": "USEBG",
+              "Quantity": 140,
+              "Price": 39.0255,
+              "Total": -5463.57,
+              "Currency": "USD",
+              "SourceIndex": 23
+            },
+            "Costs": 39.0255,
+            "CostsRub": 3106.57419435,
+            "SoldQuantity": 1,
+            "SoldEarlierQuantity": 0,
+            "RemainingQuantity": 139,
+            "CurrencyRate": 79.6037
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SettlementDate": "2025-06-12T00:00:00",
+    "Total": 2704.01,
+    "Costs": 2029.326,
+    "CostsRub": 161541.8581062,
+    "SellTransactions": [
+      {
+        "Transaction": {
+          "SettlementDate": "2025-06-12T00:00:00",
+          "Id": "028",
+          "Type": "Sell",
+          "AssetType": "Equity",
+          "Asset": "EBG NV",
+          "Ticker": "EBG US",
+          "ISIN": "USEBG",
+          "Quantity": -24,
+          "Price": 52.210416666666666666666666667,
+          "Total": 1253.05,
+          "Currency": "USD",
+          "SourceIndex": 25
+        },
+        "Costs": 936.612,
+        "CostsRub": 74557.7806644,
+        "RelatedBuyTransactions": [
+          {
+            "Transaction": {
+              "SettlementDate": "2025-05-29T00:00:00",
+              "Id": "025",
+              "Type": "Buy",
+              "AssetType": "Equity",
+              "Asset": "EBG NV",
+              "Ticker": "EBG US",
+              "ISIN": "USEBG",
+              "Quantity": 140,
+              "Price": 39.0255,
+              "Total": -5463.57,
+              "Currency": "USD",
+              "SourceIndex": 26
+            },
+            "Costs": 936.612,
+            "CostsRub": 74557.7806644,
+            "SoldQuantity": 24,
+            "SoldEarlierQuantity": 1,
+            "RemainingQuantity": 115,
+            "CurrencyRate": 79.6037
+          }
+        ]
+      },
+      {
+        "Transaction": {
+          "SettlementDate": "2025-06-12T00:00:00",
+          "Id": "029",
+          "Type": "Sell",
+          "AssetType": "Equity",
+          "Asset": "EBG NV",
+          "Ticker": "EBG US",
+          "ISIN": "USEBG",
+          "Quantity": -28,
+          "Price": 51.82,
+          "Total": 1450.96,
+          "Currency": "USD",
+          "SourceIndex": 27
+        },
+        "Costs": 1092.714,
+        "CostsRub": 86984.0774418,
+        "RelatedBuyTransactions": [
+          {
+            "Transaction": {
+              "SettlementDate": "2025-05-29T00:00:00",
+              "Id": "025",
+              "Type": "Buy",
+              "AssetType": "Equity",
+              "Asset": "EBG NV",
+              "Ticker": "EBG US",
+              "ISIN": "USEBG",
+              "Quantity": 140,
+              "Price": 39.0255,
+              "Total": -5463.57,
+              "Currency": "USD",
+              "SourceIndex": 28
+            },
+            "Costs": 1092.714,
+            "CostsRub": 86984.0774418,
+            "SoldQuantity": 28,
+            "SoldEarlierQuantity": 25,
+            "RemainingQuantity": 87,
+            "CurrencyRate": 79.6037
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SettlementDate": "2025-06-13T00:00:00",
+    "Total": 1303.25,
+    "Costs": 1014.663,
+    "CostsRub": 80770.9290531,
+    "SellTransactions": [
+      {
+        "Transaction": {
+          "SettlementDate": "2025-06-13T00:00:00",
+          "Id": "030",
+          "Type": "Sell",
+          "AssetType": "Equity",
+          "Asset": "EBG NV",
+          "Ticker": "EBG US",
+          "ISIN": "USEBG",
+          "Quantity": -26,
+          "Price": 50.125,
+          "Total": 1303.25,
+          "Currency": "USD",
+          "SourceIndex": 30
+        },
+        "Costs": 1014.663,
+        "CostsRub": 80770.9290531,
+        "RelatedBuyTransactions": [
+          {
+            "Transaction": {
+              "SettlementDate": "2025-05-29T00:00:00",
+              "Id": "025",
+              "Type": "Buy",
+              "AssetType": "Equity",
+              "Asset": "EBG NV",
+              "Ticker": "EBG US",
+              "ISIN": "USEBG",
+              "Quantity": 140,
+              "Price": 39.0255,
+              "Total": -5463.57,
+              "Currency": "USD",
+              "SourceIndex": 31
+            },
+            "Costs": 1014.663,
+            "CostsRub": 80770.9290531,
+            "SoldQuantity": 26,
+            "SoldEarlierQuantity": 53,
+            "RemainingQuantity": 61,
+            "CurrencyRate": 79.6037
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SettlementDate": "2025-07-02T00:00:00",
+    "Total": 2875.32,
+    "Costs": 3717.056,
+    "CostsRub": 327728.3670528,
+    "SellTransactions": [
+      {
+        "Transaction": {
+          "SettlementDate": "2025-07-02T00:00:00",
+          "Id": "031",
+          "Type": "Sell",
+          "AssetType": "Equity",
+          "Asset": "ABC Inc",
+          "Ticker": "ABC US",
+          "ISIN": "USABC",
+          "Quantity": -21,
+          "Price": 136.92,
+          "Total": 2875.32,
+          "Currency": "USD",
+          "SourceIndex": 33
+        },
+        "Costs": 3717.056,
+        "CostsRub": 327728.3670528,
+        "RelatedBuyTransactions": [
+          {
+            "Transaction": {
+              "SettlementDate": "2024-07-09T00:00:00",
+              "Id": "003",
+              "Type": "Buy",
+              "AssetType": "Equity",
+              "Asset": "ABC Inc",
+              "Ticker": "ABC US",
+              "ISIN": "USABC",
+              "Quantity": 30,
+              "Price": 177.00266666666666666666666667,
+              "Total": -5310.08,
+              "Currency": "USD",
+              "SourceIndex": 34
+            },
+            "Costs": 3717.056,
+            "CostsRub": 327728.3670528,
+            "SoldQuantity": 21,
+            "SoldEarlierQuantity": 2,
+            "RemainingQuantity": 7,
+            "CurrencyRate": 88.1688
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SettlementDate": "2025-07-22T00:00:00",
+    "Total": 3353.28,
+    "Costs": 3255.1586666666666666666666667,
+    "CostsRub": 283296.15521760000000000000000,
+    "SellTransactions": [
+      {
+        "Transaction": {
+          "SettlementDate": "2025-07-22T00:00:00",
+          "Id": "032",
+          "Type": "Sell",
+          "AssetType": "Equity",
+          "Asset": "ABC Inc",
+          "Ticker": "ABC US",
+          "ISIN": "USABC",
+          "Quantity": -21,
+          "Price": 159.68,
+          "Total": 3353.28,
+          "Currency": "USD",
+          "SourceIndex": 36
+        },
+        "Costs": 3255.1586666666666666666666667,
+        "CostsRub": 283296.15521760000000000000000,
+        "RelatedBuyTransactions": [
+          {
+            "Transaction": {
+              "SettlementDate": "2024-07-09T00:00:00",
+              "Id": "003",
+              "Type": "Buy",
+              "AssetType": "Equity",
+              "Asset": "ABC Inc",
+              "Ticker": "ABC US",
+              "ISIN": "USABC",
+              "Quantity": 30,
+              "Price": 177.00266666666666666666666667,
+              "Total": -5310.08,
+              "Currency": "USD",
+              "SourceIndex": 37
+            },
+            "Costs": 1239.0186666666666666666666667,
+            "CostsRub": 109242.78901760000000000000000,
+            "SoldQuantity": 7,
+            "SoldEarlierQuantity": 23,
+            "RemainingQuantity": 0,
+            "CurrencyRate": 88.1688
+          },
+          {
+            "Transaction": {
+              "SettlementDate": "2024-07-31T00:00:00",
+              "Id": "005",
+              "Type": "Buy",
+              "AssetType": "Equity",
+              "Asset": "ABC Inc",
+              "Ticker": "ABC US",
+              "ISIN": "USABC",
+              "Quantity": 21,
+              "Price": 144.01,
+              "Total": -3024.21,
+              "Currency": "USD",
+              "SourceIndex": 38
+            },
+            "Costs": 2016.14,
+            "CostsRub": 174053.366200,
+            "SoldQuantity": 14,
+            "SoldEarlierQuantity": 0,
+            "RemainingQuantity": 7,
+            "CurrencyRate": 86.3300
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SettlementDate": "2025-10-01T00:00:00",
+    "Total": 4099.31,
+    "Costs": 1404.918,
+    "CostsRub": 111836.6709966,
+    "SellTransactions": [
+      {
+        "Transaction": {
+          "SettlementDate": "2025-10-01T00:00:00",
+          "Id": "035",
+          "Type": "Sell",
+          "AssetType": "Equity",
+          "Asset": "EBG NV",
+          "Ticker": "EBG US",
+          "ISIN": "USEBG",
+          "Quantity": -36,
+          "Price": 113.86972222222222222222222222,
+          "Total": 4099.31,
+          "Currency": "USD",
+          "SourceIndex": 40
+        },
+        "Costs": 1404.918,
+        "CostsRub": 111836.6709966,
+        "RelatedBuyTransactions": [
+          {
+            "Transaction": {
+              "SettlementDate": "2025-05-29T00:00:00",
+              "Id": "025",
+              "Type": "Buy",
+              "AssetType": "Equity",
+              "Asset": "EBG NV",
+              "Ticker": "EBG US",
+              "ISIN": "USEBG",
+              "Quantity": 140,
+              "Price": 39.0255,
+              "Total": -5463.57,
+              "Currency": "USD",
+              "SourceIndex": 41
+            },
+            "Costs": 1404.918,
+            "CostsRub": 111836.6709966,
+            "SoldQuantity": 36,
+            "SoldEarlierQuantity": 79,
+            "RemainingQuantity": 25,
+            "CurrencyRate": 79.6037
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SettlementDate": "2025-11-28T00:00:00",
+    "Total": 2755.67,
+    "Costs": 1803.2990909090909090909090909,
+    "CostsRub": 155503.14441200000000000000000,
+    "SellTransactions": [
+      {
+        "Transaction": {
+          "SettlementDate": "2025-11-28T00:00:00",
+          "Id": "036",
+          "Type": "Sell",
+          "AssetType": "Equity",
+          "Asset": "ABC Inc",
+          "Ticker": "ABC US",
+          "ISIN": "USABC",
+          "Quantity": -13,
+          "Price": 211.97461538461538461538461538,
+          "Total": 2755.67,
+          "Currency": "USD",
+          "SourceIndex": 43
+        },
+        "Costs": 1803.2990909090909090909090909,
+        "CostsRub": 155503.14441200000000000000000,
+        "RelatedBuyTransactions": [
+          {
+            "Transaction": {
+              "SettlementDate": "2024-07-31T00:00:00",
+              "Id": "005",
+              "Type": "Buy",
+              "AssetType": "Equity",
+              "Asset": "ABC Inc",
+              "Ticker": "ABC US",
+              "ISIN": "USABC",
+              "Quantity": 21,
+              "Price": 144.01,
+              "Total": -3024.21,
+              "Currency": "USD",
+              "SourceIndex": 44
+            },
+            "Costs": 1008.07,
+            "CostsRub": 87026.683100,
+            "SoldQuantity": 7,
+            "SoldEarlierQuantity": 14,
+            "RemainingQuantity": 0,
+            "CurrencyRate": 86.3300
+          },
+          {
+            "Transaction": {
+              "SettlementDate": "2024-08-01T00:00:00",
+              "Id": "006",
+              "Type": "Buy",
+              "AssetType": "Equity",
+              "Asset": "ABC Inc",
+              "Ticker": "ABC US",
+              "ISIN": "USABC",
+              "Quantity": 22,
+              "Price": 132.53818181818181818181818182,
+              "Total": -2915.84,
+              "Currency": "USD",
+              "SourceIndex": 45
+            },
+            "Costs": 795.2290909090909090909090909,
+            "CostsRub": 68476.461311999999999999999999,
+            "SoldQuantity": 6,
+            "SoldEarlierQuantity": 0,
+            "RemainingQuantity": 16,
+            "CurrencyRate": 86.1091
+          }
+        ]
+      }
+    ]
+  }
+]

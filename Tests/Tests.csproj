@@ -37,6 +37,9 @@
     <None Update="DbTests\TestData\**\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="SellReportTests\TestData\**\*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="OperationsParserTests\TestData\**\*.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
