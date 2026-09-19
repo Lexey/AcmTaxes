@@ -10,7 +10,7 @@ using Acm.SellReport;
 
 namespace Acm.Taxes;
 
-class Program
+public class Program
 {
     private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
@@ -51,7 +51,7 @@ class Program
         Logger.Info("Db is already up to date");
     }
 
-    private static void RunReport(ReportOptions options)
+    public static void RunReport(ReportOptions options)
     {
         Logger.Info("Generating report for the year {0}", options.Year);
         var transactions = new Database(options.DbPath).LoadTransactions();

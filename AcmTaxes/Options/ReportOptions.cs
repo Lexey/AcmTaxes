@@ -3,7 +3,7 @@
 namespace Acm.Taxes.Options;
 
 [Verb("report", HelpText = "Generates transactions report from the db.")]
-internal sealed class ReportOptions : CommonOptions
+public sealed class ReportOptions : CommonOptions
 {
     [Value(0, Required = true, HelpText = "Reporting year")]
     public int Year { get; set; }
