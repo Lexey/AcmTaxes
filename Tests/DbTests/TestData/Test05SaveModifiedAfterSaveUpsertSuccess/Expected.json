@@ -1,0 +1,16 @@
+[
+  {
+    "SettlementDate": "2024-07-08T00:00:00",
+    "Id": "0012",
+    "Type": "Buy",
+    "AssetType": "Equity",
+    "Asset": "Updated",
+    "Ticker": "NNM US",
+    "ISIN": "ISIN1",
+    "Quantity": 20,
+    "Price": 389.899,
+    "Total": -7797.98,
+    "Currency": "USD",
+    "SourceIndex": 5
+  }
+]
