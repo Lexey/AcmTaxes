@@ -2,7 +2,7 @@
   "profiles": {
     "AcmTaxes": {
       "commandName": "Project",
-      "commandLineArgs": "report 2024"
+      "commandLineArgs": "import 2024.xlsx"
     }
   }
 }

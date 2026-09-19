@@ -8,9 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CodeJam" Version="4.1.0" />
-    <PackageReference Include="EPPlus" Version="8.4.2" />
-    <PackageReference Include="NLog" Version="6.1.1" />
+    <PackageReference Include="CodeJam" Version="5.0.0" />
+    <PackageReference Include="EPPlus" Version="8.7.0" />
+    <PackageReference Include="NLog" Version="6.2.1" />
   </ItemGroup>
 
   <ItemGroup>
